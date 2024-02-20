@@ -13,6 +13,9 @@ void bubble_sort(int *array, size_t size)
 	size_t i, j;
 	bool all_sorted = true;
 
+	if (size < 2)
+		return;
+
 	/* pick a particular integer (the current highest integer)*/
 	for (i = 0; array && i < size; i++)
 	{

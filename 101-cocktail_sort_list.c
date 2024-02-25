@@ -33,7 +33,7 @@ void cocktail_sort_list(listint_t **list)
 		}
 		last = iter1, iter2 = last;
 		/* bubble current smallest down */
-		while (iter2->prev != *list)
+		while (iter2->prev && iter2->prev != *list)
 		{
 			move = true;
 			if (iter2->n < iter2->prev->n)

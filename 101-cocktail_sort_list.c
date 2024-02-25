@@ -12,9 +12,11 @@ void cocktail_sort_list(listint_t **list)
 	listint_t *iter1 = *list, *iter2, *last = NULL;
 	bool not_sorted, move;
 
+	if (!list || !*list || !(*list)->next)
+		return;
 	do {
-		move = true, not_sorted = false;
 		iter1 = *list;
+		move = true, not_sorted = false;
 		/* bubble current highest number up */
 		while (iter1->next != last)
 		{
@@ -22,8 +24,7 @@ void cocktail_sort_list(listint_t **list)
 			if (iter1->n > iter1->next->n)
 			{
 				swap(&iter1, &iter1->next);
-				/* update list*/
-				while ((*list)->prev)
+				while ((*list)->prev)  /* update list to firt node */
 					*list = (*list)->prev;
 				not_sorted = true, move = false;
 				print_list(*list);
@@ -39,7 +40,6 @@ void cocktail_sort_list(listint_t **list)
 			if (iter2->n < iter2->prev->n)
 			{
 				swap(&iter2->prev, &iter2);
-				/* update list */
 				while ((*list)->prev)
 					*list = (*list)->prev;
 				not_sorted = true, move = false;
